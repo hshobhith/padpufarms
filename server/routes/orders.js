@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const Order = require("../models/Order");
+require("dotenv").config();
 
 // Twilio Setup
-const accountSid = "AC6828a61136cd09b9f3f59d054850d4d2";
-const authToken = "1f8ad7248a8538f43d08a3f6c1e461d7"; // ⚠️ Move this to .env
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN; // ⚠️ Move this to .env
 const client = require("twilio")(accountSid, authToken);
 
 const adminPhone = "whatsapp:+916366076182"; // Admin WhatsApp (must join sandbox)
