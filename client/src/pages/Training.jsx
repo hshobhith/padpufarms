@@ -53,7 +53,7 @@ export default function Training() {
             {item.fees && <p>💰 ₹{item.fees}</p>}
             {item.imageUrl && (
               <img
-                src={`https://api-padpu-farms-backend.onrender.com${item.imageUrl}`}
+                src={item.imageUrl}
                 alt={item.title}
                 className="mt-2 w-48 h-32 object-cover rounded"
               />

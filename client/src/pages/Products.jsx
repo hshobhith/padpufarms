@@ -56,7 +56,7 @@ export default function Products() {
           <div key={product._id} className="bg-white p-4 rounded shadow-md flex flex-col items-center">
             {product.imageUrl && (
               <img
-                src={`https://api-padpu-farms-backend.onrender.com${product.imageUrl}`}
+                src={product.imageUrl}
                 alt={product.name}
                 className="w-32 h-32 object-cover rounded mb-2"
               />

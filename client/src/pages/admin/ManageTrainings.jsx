@@ -147,7 +147,7 @@ export default function ManageTraining() {
             </div>
             {item.imageUrl && (
               <img
-                src={`https://api-padpu-farms-backend.onrender.com${item.imageUrl}`}
+                src={item.imageUrl}
                 alt={item.title}
                 className="mt-3 w-full sm:w-32 h-32 object-cover rounded"
               />

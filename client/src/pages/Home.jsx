@@ -66,7 +66,7 @@ export default function Home() {
             <div key={product._id} className="bg-white p-4 rounded shadow hover:shadow-md transition">
               {product.imageUrl && (
                 <img
-                  src={`https://api-padpu-farms-backend.onrender.com${product.imageUrl}`}
+                  src={product.imageUrl}
                   alt={product.name}
                   className="w-full h-40 object-cover rounded"
                 />
