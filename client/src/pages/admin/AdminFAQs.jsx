@@ -14,7 +14,7 @@ export default function AdminFAQs() {
 
   const fetchUnanswered = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/faqs/unanswered");
+      const res = await axios.get("https://api-padpu-farms-backend.onrender.com/api/faqs/unanswered");
       setQuestions(res.data);
     } catch (err) {
       setMessage("Failed to load questions");
@@ -26,7 +26,7 @@ export default function AdminFAQs() {
     if (!answerText) return;
 
     try {
-      await axios.put(`http://localhost:5000/api/faqs/${id}`, { answer: answerText });
+      await axios.put(`https://api-padpu-farms-backend.onrender.com/api/faqs/${id}`, { answer: answerText });
       setMessage("Answer submitted successfully!");
       setAnswers((prev) => ({ ...prev, [id]: "" }));
       fetchUnanswered(); // refresh list

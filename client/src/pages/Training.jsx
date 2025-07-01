@@ -8,7 +8,7 @@ export default function Training() {
   const [success, setSuccess] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/admin/trainings").then((res) => {
+    axios.get("https://api-padpu-farms-backend.onrender.com/api/admin/trainings").then((res) => {
       setTrainings(res.data);
     });
   }, []);
@@ -30,7 +30,7 @@ export default function Training() {
     };
 
     try {
-      await axios.post("http://localhost:5000/api/training-registrations", payload);
+      await axios.post("https://api-padpu-farms-backend.onrender.com/api/training-registrations", payload);
       setSuccess("✅ Registered successfully!");
       setForm({ name: "", phone: "" });
       setSelectedTraining(null);
@@ -53,7 +53,7 @@ export default function Training() {
             {item.fees && <p>💰 ₹{item.fees}</p>}
             {item.imageUrl && (
               <img
-                src={`http://localhost:5000${item.imageUrl}`}
+                src={`https://api-padpu-farms-backend.onrender.com${item.imageUrl}`}
                 alt={item.title}
                 className="mt-2 w-48 h-32 object-cover rounded"
               />

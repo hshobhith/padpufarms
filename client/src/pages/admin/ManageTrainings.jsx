@@ -16,7 +16,7 @@ export default function ManageTraining() {
   const [editId, setEditId] = useState(null);
   const navigate = useNavigate();
 
-  const API = "http://localhost:5000/api/admin/trainings";
+  const API = "https://api-padpu-farms-backend.onrender.com/api/admin/trainings";
 
   useEffect(() => {
     fetchTrainings();
@@ -147,7 +147,7 @@ export default function ManageTraining() {
             </div>
             {item.imageUrl && (
               <img
-                src={`http://localhost:5000${item.imageUrl}`}
+                src={`https://api-padpu-farms-backend.onrender.com${item.imageUrl}`}
                 alt={item.title}
                 className="mt-3 w-full sm:w-32 h-32 object-cover rounded"
               />

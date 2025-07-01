@@ -8,7 +8,7 @@ export default function Products() {
   const [orderForm, setOrderForm] = useState({ name: "", phone: "", address: "", pincode: "" });
   const [showForm, setShowForm] = useState(false);
 
-  const API = "http://localhost:5000/api";
+  const API = "https://api-padpu-farms-backend.onrender.com/api";
 
   useEffect(() => {
     axios.get(`${API}/admin/products`).then((res) => setProducts(res.data));
@@ -56,7 +56,7 @@ export default function Products() {
           <div key={product._id} className="bg-white p-4 rounded shadow-md flex flex-col items-center">
             {product.imageUrl && (
               <img
-                src={`http://localhost:5000${product.imageUrl}`}
+                src={`https://api-padpu-farms-backend.onrender.com${product.imageUrl}`}
                 alt={product.name}
                 className="w-32 h-32 object-cover rounded mb-2"
               />

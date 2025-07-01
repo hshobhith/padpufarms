@@ -20,10 +20,10 @@ router.post("/ask", async (req, res) => {
     return res.status(400).json({ message: "Invalid phone number" });
   }
 
-  const existing = await FAQQuestion.findOne({ phone });
-  if (existing) {
-    return res.status(409).json({ message: "You’ve already asked a question. Please wait for a response." });
-  }
+  // const existing = await FAQQuestion.findOne({ phone });
+  // if (existing) {
+  //   return res.status(409).json({ message: "You’ve already asked a question. Please wait for a response." });
+  // }
 
   try {
     const newQuestion = new FAQQuestion({ name, phone, question });

@@ -7,13 +7,13 @@ export default function FAQs() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/faqs").then((res) => setFaqs(res.data));
+    axios.get("https://api-padpu-farms-backend.onrender.com/api/faqs").then((res) => setFaqs(res.data));
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/faqs/ask", form);
+      const res = await axios.post("https://api-padpu-farms-backend.onrender.com/api/faqs/ask", form);
       setMessage(res.data.message);
       setForm({ name: "", phone: "", question: "" });
     } catch (err) {

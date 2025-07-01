@@ -15,13 +15,13 @@ export default function Home() {
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/admin/products").then((res) => {
+    axios.get("https://api-padpu-farms-backend.onrender.com/api/admin/products").then((res) => {
       setProducts(res.data.slice(0, 4));
     });
-    axios.get("http://localhost:5000/api/admin/trainings").then((res) => {
+    axios.get("https://api-padpu-farms-backend.onrender.com/api/admin/trainings").then((res) => {
       setTrainings(res.data.slice(0, 2));
     });
-    axios.get("http://localhost:5000/api/faqs").then((res) => {
+    axios.get("https://api-padpu-farms-backend.onrender.com/api/faqs").then((res) => {
       setFaqs(res.data.slice(0, 2)); // show only 2 FAQs
     });
   }, []);
@@ -57,7 +57,7 @@ export default function Home() {
             <div key={product._id} className="bg-white p-4 rounded shadow hover:shadow-md transition">
               {product.imageUrl && (
                 <img
-                  src={`http://localhost:5000${product.imageUrl}`}
+                  src={`https://api-padpu-farms-backend.onrender.com${product.imageUrl}`}
                   alt={product.name}
                   className="w-full h-40 object-cover rounded"
                 />

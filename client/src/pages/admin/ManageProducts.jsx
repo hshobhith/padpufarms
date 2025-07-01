@@ -9,7 +9,7 @@ export default function ManageProducts() {
   const [editId, setEditId] = useState(null);
   const navigate = useNavigate();
 
-  const API = "http://localhost:5000/api/admin/products";
+  const API = "https://api-padpu-farms-backend.onrender.com/api/admin/products";
 
   useEffect(() => {
     fetchProducts();
@@ -131,7 +131,7 @@ export default function ManageProducts() {
               <p>{product.description}</p>
               <p className="text-green-700 font-bold">₹{product.price} | Stock: {product.stock}</p>
               {product.imageUrl && (
-                <img src={`http://localhost:5000${product.imageUrl}`} alt={product.name} className="mt-2 w-32 h-32 object-cover rounded" />
+                <img src={`https://api-padpu-farms-backend.onrender.com${product.imageUrl}`} alt={product.name} className="mt-2 w-32 h-32 object-cover rounded" />
               )}
             </div>
             <div className="flex flex-col sm:flex-row gap-2 mt-4 sm:mt-0">

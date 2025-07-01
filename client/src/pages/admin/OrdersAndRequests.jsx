@@ -10,15 +10,15 @@ export default function AdminRequests() {
 
   const fetchData = async () => {
     const [orderRes, registerRes] = await Promise.all([
-      axios.get("http://localhost:5000/api/orders"),
-      axios.get("http://localhost:5000/api/training-registrations"),
+      axios.get("https://api-padpu-farms-backend.onrender.com/api/orders"),
+      axios.get("https://api-padpu-farms-backend.onrender.com/api/training-registrations"),
     ]);
     setOrders(orderRes.data.reverse());
     setRegistrations(registerRes.data.reverse());
   };
 
   const handleStatusChange = async (id, newStatus) => {
-    await axios.put(`http://localhost:5000/api/orders/${id}`, { status: newStatus });
+    await axios.put(`https://api-padpu-farms-backend.onrender.com/api/orders/${id}`, { status: newStatus });
     fetchData();
   };
 
