@@ -4,8 +4,7 @@ const faqQuestionSchema = new mongoose.Schema({
   name: String,
   phone: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   question: {
     type: String,
