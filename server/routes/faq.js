@@ -20,11 +20,6 @@ router.post("/ask", async (req, res) => {
     return res.status(400).json({ message: "Invalid phone number" });
   }
 
-  // const existing = await FAQQuestion.findOne({ phone });
-  // if (existing) {
-  //   return res.status(409).json({ message: "You’ve already asked a question. Please wait for a response." });
-  // }
-
   try {
     const newQuestion = new FAQQuestion({ name, phone, question });
     await newQuestion.save();
@@ -32,7 +27,6 @@ router.post("/ask", async (req, res) => {
     // Format WhatsApp message
     const message = `❓ *New FAQ Question Submitted* \n👤 Name: ${name}\n📞 Phone: ${phone}\n💬 Question: ${question}\n📅 ${new Date().toLocaleString()}`;
 
-    // Send WhatsApp message to admin
     await client.messages.create({
       body: message,
       from: "whatsapp:+14155238886", // Twilio sandbox number
