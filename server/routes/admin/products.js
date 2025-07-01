@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const multer = require("multer");
 const Product = require("../../models/Product");
+const multer = require("multer");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../../utils/cloudinary");
 
-// Setup multer for file upload
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + file.originalname;
-    cb(null, uniqueSuffix);
+// Setup Cloudinary Storage
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "padpufarms/products",
+    allowed_formats: ["jpg", "jpeg", "png"],
   },
 });
 
@@ -20,15 +20,24 @@ const upload = multer({ storage });
 router.post("/", upload.single("image"), async (req, res) => {
   try {
     const { name, description, price, stock, quantityLabel } = req.body;
-    const imageUrl = req.file ? `/uploads/${req.file.filename}` : "";
+    const imageUrl = req.file ? req.file.path : "";
 
-    const product = new Product({ name, description, price, stock, quantityLabel, imageUrl });
+    const product = new Product({
+      name,
+      description,
+      price,
+      stock,
+      quantityLabel,
+      imageUrl,
+    });
+
     await product.save();
     res.status(201).json(product);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 // Get All Products
 router.get("/", async (req, res) => {
@@ -43,7 +52,7 @@ router.put("/:id", upload.single("image"), async (req, res) => {
     const updateData = { name, description, price, stock, quantityLabel };
 
     if (req.file) {
-      updateData.imageUrl = `/uploads/${req.file.filename}`;
+      updateData.imageUrl = req.file.path; // Cloudinary image URL
     }
 
     const updated = await Product.findByIdAndUpdate(req.params.id, updateData, { new: true });

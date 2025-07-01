@@ -38,7 +38,7 @@ export default function Footer() {
               >
                 <FaInstagram />
               </a>
-              <a href="mailto:info@padpufarms.com" className="text-gray-400 hover:text-white" title="Gmail">
+              <a href="mailto:padpufarms@gmail.com" className="text-gray-400 hover:text-white" title="Gmail">
                 <FaEnvelope />
               </a>
             </div>
@@ -58,7 +58,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <span>✉️</span>
-                <p className="text-gray-300 text-sm">support@padpufarms.com</p>
+                <p className="text-gray-300 text-sm">padpufarms@gmail.com</p>
               </div>
               <div className="flex items-center space-x-2">
                 <span>🕒</span>

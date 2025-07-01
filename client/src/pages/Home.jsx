@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AOS from "aos";
 import axios from "axios";
 import backgroundVideo from "../assets/video/video.mp4";
+import "aos/dist/aos.css";
+
+
 
 // Auto-import all images from gallery folder
 function importAll(r) {
@@ -15,6 +19,11 @@ export default function Home() {
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
+    AOS.init({
+    duration: 1000,
+    once: true,
+  });
+
     axios.get("https://api-padpu-farms-backend.onrender.com/api/admin/products").then((res) => {
       setProducts(res.data.slice(0, 4));
     });
@@ -50,7 +59,7 @@ export default function Home() {
       </div>
 
       {/* Products Section */}
-      <div className="py-12 px-4 max-w-7xl mx-auto">
+      <div className="py-12 px-4 max-w-7xl mx-auto" data-aos="fade-up">
         <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Featured Products</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {products.map((product) => (
@@ -70,7 +79,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="text-center mt-6">
+        <div className="text-center mt-6" data-aos="fade-up">
           <Link to="/products" className="text-white bg-green-700 hover:bg-green-800 px-4 py-2 rounded">
             View All Products
           </Link>
@@ -79,7 +88,7 @@ export default function Home() {
 
       {/* Trainings Section */}
       {trainings.length > 0 && (
-        <div className="py-12 px-4 max-w-7xl mx-auto">
+        <div className="py-12 px-4 max-w-7xl mx-auto" data-aos="fade-up">
           <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Upcoming Trainings</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {trainings.map((training) => (
@@ -94,7 +103,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-6">
+          <div className="text-center mt-6" data-aos="fade-up">
             <Link to="/training" className="text-white bg-green-700 hover:bg-green-800 px-4 py-2 rounded">
               View All Trainings
             </Link>
@@ -103,7 +112,7 @@ export default function Home() {
       )}
 
       {/* Gallery Section */}
-      <div className="py-12 px-4 max-w-7xl mx-auto">
+      <div className="py-12 px-4 max-w-7xl mx-auto" data-aos="fade-up">
         <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Gallery</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {galleryImages.slice(0, 8).map((img, index) => (
@@ -115,7 +124,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <div className="text-center mt-6">
+        <div className="text-center mt-6" data-aos="fade-up">
           <Link to="/gallery" className="text-white bg-green-700 hover:bg-green-800 px-4 py-2 rounded">
             View Full Gallery
           </Link>
@@ -123,7 +132,7 @@ export default function Home() {
 
          {/* FAQs Section */}
       {faqs.length > 0 && (
-        <div className="py-12 px-4 max-w-5xl mx-auto">
+        <div className="py-12 px-4 max-w-5xl mx-auto" data-aos="fade-up">
           <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Customer Questions</h2>
           <div className="space-y-6">
             {faqs.map((faq, index) => (
@@ -133,7 +142,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <div className="text-center mt-6">
+          <div className="text-center mt-6" data-aos="fade-up">
             <Link to="/faqs" className="text-white bg-green-700 hover:bg-green-800 px-4 py-2 rounded">
               View All FAQs
             </Link>
