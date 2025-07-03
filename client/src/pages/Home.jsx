@@ -59,11 +59,11 @@ export default function Home() {
       </div>
 
       {/* Products Section */}
-      <div className="py-12 px-4 max-w-7xl mx-auto" data-aos="fade-up">
+      <div className="py-12 px-4 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Featured Products</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6" >
           {products.map((product) => (
-            <div key={product._id} className="bg-white p-4 rounded shadow hover:shadow-md transition">
+            <div key={product._id} className="bg-white p-4 rounded shadow hover:shadow-md transition" data-aos="zoom-in">
               {product.imageUrl && (
                 <img
                   src={product.imageUrl}
@@ -79,7 +79,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="text-center mt-6" data-aos="fade-up">
+        <div className="text-center mt-6" data-aos="zoom-in">
           <Link to="/products" className="text-white bg-green-700 hover:bg-green-800 px-4 py-2 rounded">
             View All Products
           </Link>
@@ -92,7 +92,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Upcoming Trainings</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {trainings.map((training) => (
-              <div key={training._id} className="bg-white p-4 rounded shadow hover:shadow-md transition">
+              <div key={training._id} className="bg-white p-4 rounded shadow hover:shadow-md transition" data-aos="zoom-in">
                 <h3 className="text-lg font-semibold">{training.title}</h3>
                 <p className="text-sm text-gray-600">{training.description}</p>
                 {training.date && <p className="text-sm mt-2">📅 {training.date}</p>}
@@ -112,7 +112,7 @@ export default function Home() {
       )}
 
       {/* Gallery Section */}
-      <div className="py-12 px-4 max-w-7xl mx-auto" data-aos="fade-up">
+      <div className="py-12 px-4 max-w-7xl mx-auto" data-aos="zoom-in">
         <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Gallery</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
           {galleryImages.slice(0, 8).map((img, index) => (
@@ -124,7 +124,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <div className="text-center mt-6" data-aos="fade-up">
+        <div className="text-center mt-6" data-aos="zoom-in">
           <Link to="/gallery" className="text-white bg-green-700 hover:bg-green-800 px-4 py-2 rounded">
             View Full Gallery
           </Link>
@@ -132,11 +132,11 @@ export default function Home() {
 
          {/* FAQs Section */}
       {faqs.length > 0 && (
-        <div className="py-12 px-4 max-w-5xl mx-auto" data-aos="fade-up">
+        <div className="py-12 px-4 max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Customer Questions</h2>
           <div className="space-y-6">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-white p-4 rounded shadow">
+              <div key={index} className="bg-white p-4 rounded shadow" data-aos="zoom-in">
                 <h3 className="font-semibold text-lg text-green-700">Q: {faq.question}</h3>
                 <p className="text-gray-800 mt-2">A: {faq.answer}</p>
               </div>

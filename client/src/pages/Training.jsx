@@ -45,7 +45,7 @@ export default function Training() {
 
       <div className="grid gap-6">
         {trainings.map((item) => (
-          <div key={item._id} className="bg-white rounded shadow p-4">
+          <div key={item._id} className="bg-white rounded shadow p-4" data-aos="zoom-in">
             <h2 className="text-xl font-semibold">{item.title}</h2>
             <p>{item.description}</p>
             {item.date && <p>📅 {item.date} {item.time && `@ ${item.time}`}</p>}

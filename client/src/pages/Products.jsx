@@ -53,7 +53,7 @@ export default function Products() {
 
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {products.map((product) => (
-          <div key={product._id} className="bg-white p-4 rounded shadow-md flex flex-col items-center">
+          <div key={product._id} className="bg-white p-4 rounded shadow-md flex flex-col items-center" data-aos="zoom-in">
             {product.imageUrl && (
               <img
                 src={product.imageUrl}

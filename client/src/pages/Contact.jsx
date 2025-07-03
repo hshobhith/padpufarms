@@ -53,7 +53,7 @@ export default function Contact() {
             style={{ border: 0 }}
             allowFullScreen=""
             loading="lazy"
-            src="https://goo.gl/maps/BBtxc7KKKM3HaXJ6A"
+            src="https://www.google.com/maps?q=Kukkujadka-Pailar+Rd,+Karnataka,+India&output=embed"
           ></iframe>
         </div>
       </div>
