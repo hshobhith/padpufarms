@@ -35,12 +35,26 @@ export default function Contact() {
           </a>
         </div>
 
-        <div className="text-gray-800 text-sm">
+        <div className="text-gray-800 text-sm mb-6">
           <p><strong>Address:</strong></p>
-          <p>123 Farm Road, Agricultural District, India</p>
+          <p>Kukkujadka-Pailar Rd, Karnataka 574248, India</p>
           <p><strong>Phone:</strong> +91 7411860340</p>
           <p><strong>Email:</strong> padpufarms@gmail.com</p>
           <p><strong>Working Hours:</strong> Mon - Sat: 8:00 AM - 6:00 PM</p>
+        </div>
+
+        {/* Google Map Embed */}
+        <div className="w-full h-64 rounded-lg overflow-hidden shadow-lg">
+          <iframe
+            title="Padpu Farms Location"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            src="https://goo.gl/maps/BBtxc7KKKM3HaXJ6A"
+          ></iframe>
         </div>
       </div>
     </div>

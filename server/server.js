@@ -9,7 +9,7 @@ app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
 // MongoDB URI from .env
-const uri = process.env.MONGO_URI || "mongodb+srv://hshobhith196:NbYkigY5TgAoOKVG@cluster0.pmoolqt.mongodb.net/farm";
+const uri = process.env.MONGO_URI || "mongodb+srv://padpufarms:j9Ip9o4u9beupKgH@cluster0.k2lv70s.mongodb.net/";
 
 // Connect to MongoDB
 const connectDB = async () => {

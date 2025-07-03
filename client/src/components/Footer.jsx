@@ -50,7 +50,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-start space-x-2">
                 <span className="mt-1">📍</span>
-                <p className="text-gray-300 text-sm">123 Farm Road, Agricultural District, India</p>
+                <p className="text-gray-300 text-sm">Kukkujadka-Pailar Rd, Karnataka 574248, India</p>
               </div>
               <div className="flex items-center space-x-2">
                 <span>📞</span>
