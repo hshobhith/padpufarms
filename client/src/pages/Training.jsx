@@ -6,11 +6,14 @@ export default function Training() {
   const [selectedTraining, setSelectedTraining] = useState(null);
   const [form, setForm] = useState({ name: "", phone: "" });
   const [success, setSuccess] = useState("");
+  const [loadingTrainings, setLoadingTrainings] = useState(true);
 
   useEffect(() => {
     axios.get("https://api-padpu-farms-backend.onrender.com/api/admin/trainings").then((res) => {
-      setTrainings(res.data);
-    });
+      setTrainings(res.data)})
+      .catch(console.error)
+    .finally(() => setLoadingTrainings(false));
+    
   }, []);
 
   const handleRegister = async (e) => {
@@ -34,6 +37,20 @@ export default function Training() {
       setSuccess("✅ Registered successfully!");
       setForm({ name: "", phone: "" });
       setSelectedTraining(null);
+
+      const message = `🛒 *New Training Registration*
+
+    *Customer Details:*
+    👤 Name: ${form.name}
+    📞 Phone: ${form.phone}
+
+    Please confirm the Training! ✅`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const adminPhoneNumber = "916366076182"; // Replace with actual admin number
+      const whatsappLink = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
+
+      window.open(whatsappLink, "_blank");
     } catch {
       setSuccess("❌ Registration failed");
     }
@@ -42,7 +59,11 @@ export default function Training() {
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold text-green-800 text-center mb-6">Honey Cultivation Training</h1>
-
+      {loadingTrainings ? (
+        <div className="flex justify-center items-center py-10">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-green-600 border-solid"></div>
+        </div>
+      ) : trainings.length > 0 && (
       <div className="grid gap-6">
         {trainings.map((item) => (
           <div key={item._id} className="bg-white rounded shadow p-4" data-aos="zoom-in">
@@ -67,6 +88,7 @@ export default function Training() {
           </div>
         ))}
       </div>
+      )}
 
       {/* Registration Form Modal-like */}
       {selectedTraining && (
@@ -107,6 +129,7 @@ export default function Training() {
           </div>
         </div>
       )}
+      
     </div>
   );
 }
