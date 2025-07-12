@@ -28,11 +28,11 @@ export default function Contact() {
           </p>
 
           <div className="flex justify-center space-x-6 text-2xl mb-6 text-blue-400">
-            <a href="tel:+91917411860340" title="Call">
+            <a href="tel:+917411860340" title="Call">
               <FaPhoneAlt />
             </a>
             <a
-              href="https://wa.me/91917411860340"
+              href="https://wa.me/917411860340"
               target="_blank"
               rel="noopener noreferrer"
               title="WhatsApp"
