@@ -18,21 +18,31 @@ export default function Home() {
   const [trainings, setTrainings] = useState([]);
   const [faqs, setFaqs] = useState([]);
 
+  const [loadingProducts, setLoadingProducts] = useState(true);
+const [loadingTrainings, setLoadingTrainings] = useState(true);
+const [loadingFaqs, setLoadingFaqs] = useState(true);
+
   useEffect(() => {
     AOS.init({
     duration: 1000,
     once: true,
   });
 
-    axios.get("https://api-padpu-farms-backend.onrender.com/api/admin/products").then((res) => {
-      setProducts(res.data.slice(0, 4));
-    });
-    axios.get("https://api-padpu-farms-backend.onrender.com/api/admin/trainings").then((res) => {
-      setTrainings(res.data.slice(0, 2));
-    });
-    axios.get("https://api-padpu-farms-backend.onrender.com/api/faqs").then((res) => {
-      setFaqs(res.data.slice(0, 2)); // show only 2 FAQs
-    });
+    axios.get("https://api-padpu-farms-backend.onrender.com/api/admin/products")
+     .then((res) => setProducts(res.data.slice(0, 4)))
+    .catch(console.error)
+    .finally(() => setLoadingProducts(false));
+
+    axios.get("https://api-padpu-farms-backend.onrender.com/api/admin/trainings")
+    .then((res) => setTrainings(res.data.slice(0, 2)))
+    .catch(console.error)
+    .finally(() => setLoadingTrainings(false));
+
+
+    axios.get("https://api-padpu-farms-backend.onrender.com/api/faqs")
+    .then((res) => setFaqs(res.data.slice(0, 2)))
+    .catch(console.error)
+    .finally(() => setLoadingFaqs(false));
   }, []);
 
   return (
@@ -59,8 +69,15 @@ export default function Home() {
       </div>
 
       {/* Products Section */}
+      
       <div className="py-12 px-4 max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Featured Products</h2>
+        {loadingProducts ? (
+        <div className="flex justify-center items-center py-10">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-green-600 border-solid"></div>
+        </div>
+        ) : (
+          <>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6" >
           {products.map((product) => (
             <div key={product._id} className="bg-white p-4 rounded shadow hover:shadow-md transition" data-aos="zoom-in">
@@ -79,6 +96,8 @@ export default function Home() {
             </div>
           ))}
         </div>
+                </>
+        )}
         <div className="text-center mt-6" data-aos="zoom-in">
           <Link to="/products" className="text-white bg-green-700 hover:bg-green-800 px-4 py-2 rounded">
             View All Products
@@ -86,8 +105,13 @@ export default function Home() {
         </div>
       </div>
 
+
       {/* Trainings Section */}
-      {trainings.length > 0 && (
+      {loadingTrainings ? (
+  <div className="flex justify-center items-center py-10">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-green-600 border-solid"></div>
+  </div>
+) : trainings.length > 0 && (
         <div className="py-12 px-4 max-w-7xl mx-auto" data-aos="fade-up">
           <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Upcoming Trainings</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -131,7 +155,11 @@ export default function Home() {
         </div>
 
          {/* FAQs Section */}
-      {faqs.length > 0 && (
+      {loadingFaqs ? (
+        <div className="flex justify-center items-center py-10">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-green-600 border-solid"></div>
+        </div>
+      ) : faqs.length > 0 && (
         <div className="py-12 px-4 max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Customer Questions</h2>
           <div className="space-y-6">
