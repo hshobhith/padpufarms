@@ -40,7 +40,7 @@ export default function FAQs() {
 
   return (
     <div className="max-w-4xl mx-auto py-10 px-4">
-      <h1 className="text-3xl font-semibold mb-6 text-green-800">Frequently Asked Questions</h1>
+      <h1 className="text-3xl font-semibold mb-6 text-green-800">Frequently Asked Question</h1>
         {loadingFaqs ? (
         <div className="flex justify-center items-center py-10">
           <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-green-600 border-solid"></div>
