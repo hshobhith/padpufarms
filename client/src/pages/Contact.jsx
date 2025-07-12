@@ -14,7 +14,7 @@ export default function Contact() {
           className="w-full h-full object-cover"
         >
           <source src={backgroundVideo} type="video/mp4" />
-          Your browser does not support the video tag.
+          Your browser does not support the video tag
         </video>
       </div>
 
