@@ -113,7 +113,7 @@ const [loadingFaqs, setLoadingFaqs] = useState(true);
   </div>
 ) : trainings.length > 0 && (
         <div className="py-12 px-4 max-w-7xl mx-auto" data-aos="fade-up">
-          <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Upcoming Trainings</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-green-800">Upcoming Training</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {trainings.map((training) => (
               <div key={training._id} className="bg-white p-4 rounded shadow hover:shadow-md transition" data-aos="zoom-in">
