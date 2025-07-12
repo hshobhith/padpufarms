@@ -5,9 +5,12 @@ export default function FAQs() {
   const [faqs, setFaqs] = useState([]);
   const [form, setForm] = useState({ name: "", phone: "", question: "" });
   const [message, setMessage] = useState("");
+  const [loadingFaqs, setLoadingFaqs] = useState(true);
 
   useEffect(() => {
-    axios.get("https://api-padpu-farms-backend.onrender.com/api/faqs").then((res) => setFaqs(res.data));
+    axios.get("https://api-padpu-farms-backend.onrender.com/api/faqs").then((res) => setFaqs(res.data))
+    .catch(console.error)
+    .finally(() => setLoadingFaqs(false));
   }, []);
 
   const handleSubmit = async (e) => {
@@ -16,6 +19,20 @@ export default function FAQs() {
       const res = await axios.post("https://api-padpu-farms-backend.onrender.com/api/faqs/ask", form);
       setMessage(res.data.message);
       setForm({ name: "", phone: "", question: "" });
+      const message = `🛒 *New Customer Question*
+
+    *Customer Details:*
+    👤 Name: ${form.name}
+    📞 Phone: ${form.phone}
+    📞 Question: ${form.question}
+
+    `;
+
+      const encodedMessage = encodeURIComponent(message);
+      const adminPhoneNumber = "916366076182"; // Replace with actual admin number
+      const whatsappLink = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
+
+      window.open(whatsappLink, "_blank");
     } catch (err) {
       setMessage(err.response?.data?.message || "Error submitting question");
     }
@@ -24,8 +41,12 @@ export default function FAQs() {
   return (
     <div className="max-w-4xl mx-auto py-10 px-4">
       <h1 className="text-3xl font-semibold mb-6 text-green-800">Frequently Asked Questions</h1>
+        {loadingFaqs ? (
+        <div className="flex justify-center items-center py-10">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-green-600 border-solid"></div>
+        </div>
+      ) : faqs.length > 0 && (
 
-      {/* Existing FAQs */}
       <div className="space-y-4 mb-10">
         {faqs.map((faq) => (
           <div key={faq._id}>
@@ -34,6 +55,7 @@ export default function FAQs() {
           </div>
         ))}
       </div>
+      )}
 
       {/* Ask Your Question */}
       <h2 className="text-xl font-semibold mb-2 text-green-700">Ask Your Question</h2>
