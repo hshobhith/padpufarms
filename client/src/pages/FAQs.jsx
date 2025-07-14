@@ -29,7 +29,7 @@ export default function FAQs() {
     `;
 
       const encodedMessage = encodeURIComponent(message);
-      const adminPhoneNumber = "916366076182"; // Replace with actual admin number
+      const adminPhoneNumber = "917411860340"; // Replace with actual admin number
       const whatsappLink = `https://wa.me/${adminPhoneNumber}?text=${encodedMessage}`;
 
       window.open(whatsappLink, "_blank");
