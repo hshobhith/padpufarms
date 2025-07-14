@@ -70,7 +70,13 @@ export default function Footer() {
 
         {/* Footer Bottom */}
         <div className="border-t border-gray-800 mt-12 pt-6 text-center text-sm text-gray-400">
-          &copy; Shobhi | {currentYear} Padpu Farms. All rights reserved.
+          &copy; 
+          <a
+            href="https://shobhith.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline hover:text-green-600 transition"
+          >Shobhi | {currentYear} Padpu Farms. </a>
         </div>
       </div>
     </footer>
